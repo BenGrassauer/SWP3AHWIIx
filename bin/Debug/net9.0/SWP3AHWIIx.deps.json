@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "SWP3AHWIIx/1.0.0": {
+        "runtime": {
+          "SWP3AHWIIx.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SWP3AHWIIx/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

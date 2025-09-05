@@ -8,7 +8,6 @@ class Program
         if (args.Length != 2)
         {
             Console.WriteLine("Verwendung: dotnet run \"2 3/8\" \"1 5/6\"");
-            return;
         }
 
         var first = ParseMixedFraction(args[0]);
@@ -21,7 +20,7 @@ class Program
 
     static Fraction ParseMixedFraction(string input)
     {
-        var parts = input.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        string[] parts = input.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
         int whole = 0;
         Fraction frac = new Fraction(0, 1);
@@ -44,7 +43,7 @@ class Program
 
     static Fraction ParseFraction(string part)
     {
-        var nums = part.Split('/');
+        string[] nums = part.Split('/');
         return new Fraction(int.Parse(nums[0]), int.Parse(nums[1]));
     }
 

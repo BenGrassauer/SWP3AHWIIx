@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\SWP3AHWIIx.csproj": {}
+    "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\2025_09_03_introC#\\SWP3AHWIIx.csproj": {}
   },
   "projects": {
-    "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\SWP3AHWIIx.csproj": {
+    "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\2025_09_03_introC#\\SWP3AHWIIx.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\SWP3AHWIIx.csproj",
+        "projectUniqueName": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\2025_09_03_introC#\\SWP3AHWIIx.csproj",
         "projectName": "SWP3AHWIIx",
-        "projectPath": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\SWP3AHWIIx.csproj",
+        "projectPath": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\2025_09_03_introC#\\SWP3AHWIIx.csproj",
         "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\obj\\",
+        "outputPath": "C:\\Users\\steve\\OneDrive\\Dokumente\\Bens schulzeugs\\schule\\SWP3AHWIIx\\2025_09_03_introC#\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config"

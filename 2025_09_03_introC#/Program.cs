@@ -1,19 +1,17 @@
-﻿using System;
-using System.Linq;
-
-class Program
+﻿class Program
 {
     static void Main(string[] args)
     {
+        //string[] args = ["6 7/23", "9 7/93"];
         if (args.Length != 2)
         {
-            Console.WriteLine("Verwendung: dotnet run \"2 3/8\" \"1 5/6\"");
+            Console.WriteLine("Verwendungsbeispiel: dotnet run \"6 7/23\" \"9 7/93\"");
         }
 
-        var first = ParseMixedFraction(args[0]);
-        var second = ParseMixedFraction(args[1]);
+        Fraction first = ParseMixedFraction(args[0]);
+        Fraction second = ParseMixedFraction(args[1]);
 
-        var result = first + second;
+        Fraction result = first + second;
 
         Console.WriteLine(ToMixedFraction(result));
     }

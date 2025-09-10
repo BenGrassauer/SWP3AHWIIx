@@ -2,19 +2,26 @@
 {
     static void Main(string[] args)
     {
-        if (args.Length != 2)
+        try
         {
-            Console.WriteLine("Bitte genau zwei gemischte Zahlen als Argumente eingeben.");
-            return;
+            if (args.Length != 2)
+            {
+                throw new Exception("Bitte genau zwei gemischte Zahlen als Argumente eingeben.");
+            }
+            //string[] args = ["6 7/23", "9 7/93"];
+
+            Fraction first = ParseMixedFraction(args[0]);
+            Fraction second = ParseMixedFraction(args[1]);
+
+            Fraction result = first + second;
+
+            Console.WriteLine(ToMixedFraction(result));
         }
-        //string[] args = ["6 7/23", "9 7/93"];
-
-        Fraction first = ParseMixedFraction(args[0]);
-        Fraction second = ParseMixedFraction(args[1]);
-
-        Fraction result = first + second;
-
-        Console.WriteLine(ToMixedFraction(result));
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler: {ex.Message}");
+            Environment.Exit(1);
+        }
     }
 
     static Fraction ParseMixedFraction(string input)
@@ -42,15 +49,8 @@
 
     static Fraction ParseFraction(string part)
     {
-        try
-        {
-            string[] nums = part.Split('/');
-            return new Fraction(int.Parse(nums[0]), int.Parse(nums[1]));
-        }
-        catch (Exception ex)
-        {
-            throw new FormatException("Ungültiges Bruchformat.", ex);
-        }
+        string[] nums = part.Split('/');
+        return new Fraction(int.Parse(nums[0]), int.Parse(nums[1]));
     }
 
     static string ToMixedFraction(Fraction frac)

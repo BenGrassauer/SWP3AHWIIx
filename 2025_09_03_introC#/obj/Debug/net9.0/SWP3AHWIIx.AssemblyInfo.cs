@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SWP3AHWIIx")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14288546b9376ac4ef6dd38f38dac9c86faa03fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2c077e483a1f0e7c5a5982cb1bb1e553d18660f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SWP3AHWIIx")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SWP3AHWIIx")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

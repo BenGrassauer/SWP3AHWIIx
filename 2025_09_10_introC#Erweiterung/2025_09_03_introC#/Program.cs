@@ -5,6 +5,7 @@
         if (args.Length != 2)
         {
             Console.WriteLine("Bitte genau zwei gemischte Zahlen als Argumente eingeben.");
+            return;
         }
         //string[] args = ["6 7/23", "9 7/93"];
 
@@ -41,8 +42,15 @@
 
     static Fraction ParseFraction(string part)
     {
-        string[] nums = part.Split('/');
-        return new Fraction(int.Parse(nums[0]), int.Parse(nums[1]));
+        try
+        {
+            string[] nums = part.Split('/');
+            return new Fraction(int.Parse(nums[0]), int.Parse(nums[1]));
+        }
+        catch (Exception ex)
+        {
+            throw new FormatException("Ungültiges Bruchformat.", ex);
+        }
     }
 
     static string ToMixedFraction(Fraction frac)

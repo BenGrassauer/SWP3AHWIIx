@@ -1,4 +1,4 @@
-﻿namespace _2025_09_10_introC_Erweiterung.Tests;
+﻿namespace _2025_09_10_introCs_Erweiterung.Tests;
 
 public class UnitTest1
 {

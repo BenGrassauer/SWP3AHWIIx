@@ -1,7 +1,7 @@
 import { PrismaClient } from "./prisma/client/client.ts";
+//import {}
 const prisma = new PrismaClient();
 
-//const class_users = ["Ben", "Georgi", "Marcel", "Dejan", "Moritz"];
 const seed_users = [
   { name: "Ben", email: "ben@example.com", password: "abc123" },
   { name: "jerk", email: "jerk@example.com", password: "abc123" },

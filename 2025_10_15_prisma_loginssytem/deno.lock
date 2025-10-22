@@ -3,8 +3,10 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.15",
     "jsr:@std/internal@^1.0.12": "1.0.12",
+    "npm:@faker-js/faker@^10.1.0": "10.1.0",
     "npm:@prisma/client@^6.17.0": "6.17.0_prisma@6.17.0",
     "npm:bcrypt@6": "6.0.0",
+    "npm:faker-js@1": "1.0.0",
     "npm:prisma@^6.17.0": "6.17.0"
   },
   "jsr": {
@@ -19,6 +21,9 @@
     }
   },
   "npm": {
+    "@faker-js/faker@10.1.0": {
+      "integrity": "sha512-C3mrr3b5dRVlKPJdfrAXS8+dq+rq8Qm5SNRazca0JKgw1HQERFmrVb0towvMmw5uu8hHKNiQasMaR/tydf3Zsg=="
+    },
     "@prisma/client@6.17.0_prisma@6.17.0": {
       "integrity": "sha512-b42mTLOdLEZ6e/igu8CLdccAUX9AwHknQQ1+pHOftnzDP2QoyZyFvcANqSLs5ockimFKJnV7Ljf+qrhNYf6oAg==",
       "dependencies": [
@@ -139,6 +144,9 @@
     "exsolve@1.0.7": {
       "integrity": "sha512-VO5fQUzZtI6C+vx4w/4BWJpg3s/5l+6pRQEHzFRM8WFi4XffSP1Z+4qi7GbjWbvRQEbdIco5mIMq+zX4rPuLrw=="
     },
+    "faker-js@1.0.0": {
+      "integrity": "sha512-kaToadbN63LWhHjl69pqG+YHlxAK0aZAPhQDUpVP7v7+RG//ZpK0OzXjCwaAQq98awOii0WSHxtJmIz0X7/UqQ=="
+    },
     "fast-check@3.23.2": {
       "integrity": "sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==",
       "dependencies": [
@@ -228,8 +236,10 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
+      "npm:@faker-js/faker@^10.1.0",
       "npm:@prisma/client@^6.17.0",
       "npm:bcrypt@6",
+      "npm:faker-js@1",
       "npm:prisma@^6.17.0"
     ]
   }

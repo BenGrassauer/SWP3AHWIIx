@@ -1,6 +1,5 @@
 **/bin/
 **/obj/
 **/prisma/client/
-**/dev.db/
+**/dev.db
 .env
-.db

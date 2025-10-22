@@ -3,3 +3,4 @@
 **/prisma/client/
 **/dev.db/
 .env
+.db

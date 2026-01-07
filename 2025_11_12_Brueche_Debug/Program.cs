@@ -5,9 +5,9 @@ class Program
     {
         try
         {
-#if DEBUG
-            args = new string[] { "3/4", "2/5" }; // Zum Testen
-#endif
+            //#if DEBUG
+            //            args = new string[] { "3/4", "2/5" }; // Zum Testen
+            //#endif
             if (args.Length != 2)
             {
                 throw new Exception("Bitte genau zwei Brüche als Argumente angeben.");
@@ -24,7 +24,7 @@ class Program
             }
             Bruch bruch1 = new Bruch(args[0]);
             Bruch bruch2 = new Bruch(args[1]);
-            var ergebnis = bruch1.addiere(bruch2);
+            var ergebnis = bruch1.addiere(bruch2).ToString();
             Console.WriteLine("Ergebnis: " + ergebnis);
         }
         catch (Exception e)

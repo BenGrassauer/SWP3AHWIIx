@@ -7,46 +7,30 @@ class Bruch
     private int neuerZaehler;
     private int zaehler;
     private int nenner;
-    private int ganzzahligerAnteil;
 
     public Bruch(string bruchtext)
     {
-        string[] teile = bruchtext.Split('/');
-        this.zaehler = int.Parse(teile[0]);
-        this.nenner = int.Parse(teile[1]);
+        string[] ganzzahlteil = bruchtext.Split(' ');
+        if (ganzzahlteil.Length == 1)
+        { string[] teile = ganzzahlteil[0].Split('/');
+            this.nenner = int.Parse(teile[1]);
+            this.zaehler = int.Parse(teile[0]) + this.nenner * int.Parse(ganzzahlteil[0]);
+        }
+        else
+        {
+            string[] teile = ganzzahlteil[1].Split('/');
+            this.nenner = int.Parse(teile[1]);
+            this.zaehler = int.Parse(teile[0]);
+        }
     }
 
-    public string addiere(Bruch b)
+    public Bruch addiere(Bruch b)
     {
-        if (this.nenner == b.nenner)
-        {
-            neuerZaehler = this.zaehler + b.zaehler;
-            neuereNenner = this.nenner;
-        }
-        else
-        {
-            neuereNenner = kgv(this.nenner, b.nenner);
-            neuerZaehler =
-                neuereNenner / this.nenner * this.zaehler + neuereNenner / b.nenner * b.zaehler;
-            Console.WriteLine(kgv(this.nenner, b.nenner));
-        }
-        if (neuerZaehler > neuereNenner)
-        {
-            ganzzahligerAnteil = neuerZaehler / neuereNenner;
-            neuerZaehler = neuerZaehler % neuereNenner;
-        }
-        if (ganzzahligerAnteil == 0)
-        {
-            return neuerZaehler + "/" + neuereNenner;
-        }
-        else
-        {
-            return ganzzahligerAnteil.ToString()
-                + " "
-                + neuerZaehler.ToString()
-                + "/"
-                + neuereNenner.ToString();
-        }
+        this.neuereNenner = kgv(this.nenner, b.nenner);
+        this.neuerZaehler =
+            (this.neuereNenner / this.nenner) * this.zaehler
+            + (this.neuereNenner / b.nenner) * b.zaehler;
+        return new Bruch(this.neuerZaehler + "/" + this.neuereNenner);
     }
 
     private int kgv(int a, int b)
@@ -61,8 +45,10 @@ class Bruch
         return kgv;
     }
 
-    public static string toString(Bruch b)
+    public static string ToString(Bruch b)
     {
-        return b.zaehler + "/" + b.nenner;
+        int ganzzahligerAnteil = b.zaehler / b.nenner;
+        b.zaehler = b.zaehler % b.nenner;
+        return ganzzahligerAnteil + " " + b.zaehler + "/" + b.nenner;
     }
 }

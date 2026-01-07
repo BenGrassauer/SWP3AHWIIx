@@ -1,0 +1,9 @@
+Comma-Seperated Values
+    -Ist ein Dateiformat um Daten tabbelarisch (mit "Vorzeichen" wie A3 ähnlich wie Excel) zu speichern. (.csv)
+    -Es gibt 2 Separator: Einmal offensichtlicherweise das Komma und der zweite ist das Zeilenumbruchszeichen.
+    -Delimiter ist effektiv dasselbe wie ein Separator. In CSV ist es das Komma.
+    -Encoded in allen möglichen Textformen (UTF-8, UTF-16, ASCII und ANSI)
+    -Quotation wenn man ein Feld, dass ein Komma als Inhalt besitzt, speichern möchte, dann muss man das unter "" schreiben. 
+     Genau dasselbe wir auch bei anderen spezifischen Sonderzeichen benötigt
+    -Dialekt wird in einem JSON Format spezifiziert. Könnte theorethisch alles als Delimiter und als Separator nutzen.
+    -Man kann CSV nutzen um Daten in C# zu speichern und Daten innerhalb der C# Umgebung zu nutzen.

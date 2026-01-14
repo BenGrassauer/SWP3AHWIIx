@@ -31,10 +31,20 @@ namespace CsvReaderExample
 
             foreach (var person in records)
             {
-                Console.WriteLine(
-                    $"Fullname: {person.Fullname}, Email: {person.Email}, Telefon: {person.Telefon}, Adresse: {person.Adresse}, Unicode: {person.unicode}"
-                );
+                if (person.unicode.Length > 0)
+                {
+                    Console.WriteLine(
+                        $"---------------------------------\nFullname: {person.Fullname}\n Email: {person.Email}\n Telefon: {person.Telefon}\n Adresse: {person.Adresse}\n Unicode: {person.unicode}"
+                    );
+                }
+                else
+                {
+                    Console.WriteLine(
+                        $"---------------------------------\nFullname: {person.Fullname}\n Email: {person.Email}\n Telefon: {person.Telefon}\n Adresse: {person.Adresse}"
+                    );
+                }
             }
+            Console.WriteLine("---------------------------------");
         }
     }
 }

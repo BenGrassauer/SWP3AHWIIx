@@ -50,7 +50,11 @@ namespace CsvReaderExample
                 else
                 {
                     Console.WriteLine(
-                        $"---------------------------------\nFullname: {person.Fullname}\n Email: {person.Email}\n Telefon: {person.Telefon}\n Adresse: {person.Adresse}"
+                        $@"---------------------------------\n
+                        Fullname: {person.Fullname}\n 
+                        Email: {person.Email}\n 
+                        Telefon: {person.Telefon}\n 
+                        Adresse: {person.Adresse}"
                     );
                 }
             }

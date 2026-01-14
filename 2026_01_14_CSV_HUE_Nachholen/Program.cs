@@ -39,7 +39,12 @@ namespace CsvReaderExample
                 if (person.unicode.Length > 0)
                 {
                     Console.WriteLine(
-                        $"---------------------------------\nFullname: {person.Fullname}\n Email: {person.Email}\n Telefon: {person.Telefon}\n Adresse: {person.Adresse}\n Unicode: {person.unicode}"
+                        $@"---------------------------------\n
+                        Fullname: {person.Fullname}\n 
+                        Email: {person.Email}\n 
+                        Telefon: {person.Telefon}\n 
+                        Adresse: {person.Adresse}\n 
+                        Unicode: {person.unicode}"
                     );
                 }
                 else

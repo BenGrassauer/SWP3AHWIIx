@@ -15,7 +15,7 @@ namespace CsvReaderExample
         public string? Adresse { get; set; }
         public string? unicode { get; set; }
 
-        string[] ToArray()
+        private string[] ToArray()
         {
             return [Fullname, Email, Telefon, Adresse, unicode];
         }

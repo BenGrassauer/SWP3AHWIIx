@@ -1,0 +1,181 @@
+﻿@page "/playerlookup"
+@rendermode InteractiveServer
+@inject RiotService RiotService
+
+<PageTitle>Riot Player Lookup</PageTitle>
+
+<h1>Riot Player Lookup</h1>
+
+<div class="card p-3 mb-3">
+    <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-3">
+            <label class="form-label">Game Name</label>
+            <input class="form-control" @bind="gameName" placeholder="e.g. hideonbush" />
+        </div>
+        <div class="col-12 col-md-2">
+            <label class="form-label">Tag</label>
+            <input class="form-control" @bind="tagLine" placeholder="e.g. KR1" />
+        </div>
+        <div class="col-12 col-md-2">
+            <label class="form-label">Region</label>
+            <select class="form-select" @bind="region">
+                <option value="EUW">EUW</option>
+                <option value="EUNE">EUNE</option>
+                <option value="NA">NA</option>
+                <option value="KR">KR</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-2">
+            <button class="btn btn-primary w-100" @onclick="LookupPlayer" disabled="@isLoading">Lookup</button>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+@if (!string.IsNullOrWhiteSpace(infoMessage))
+{
+    <div class="alert alert-info">@infoMessage</div>
+}
+
+@if (isLoading)
+{
+    <p>Loading Riot data...</p>
+}
+
+@if (account is not null)
+{
+    <div class="card p-3 mb-3">
+        <h4 class="mb-1">@account.gameName#@account.tagLine</h4>
+        <div class="text-muted small">PUUID: @account.puuid</div>
+    </div>
+}
+
+@if (masteryRows.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Champion</th>
+                    <th>Level</th>
+                    <th>Points</th>
+                    <th>Last Played</th>
+                    <th>Chest Granted</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in masteryRows)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                @if (!string.IsNullOrWhiteSpace(row.ChampionImageUrl))
+                                {
+                                    <img src="@row.ChampionImageUrl" alt="@row.ChampionName" width="36" height="36" />
+                                }
+                                <span>@row.ChampionName</span>
+                            </div>
+                        </td>
+                        <td>@row.Mastery.championLevel</td>
+                        <td>@row.Mastery.championPoints.ToString("N0")</td>
+                        <td>@ToDateTime(row.Mastery.lastPlayTime).ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@(row.Mastery.chestGranted ? "Yes" : "No")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private string gameName = string.Empty;
+    private string tagLine = string.Empty;
+    private string region = "EUW";
+
+    private bool isLoading;
+    private string? errorMessage;
+    private string? infoMessage;
+
+    private RiotAccountDto? account;
+    private readonly List<MasteryRow> masteryRows = new();
+
+    private async Task LookupPlayer()
+    {
+        errorMessage = null;
+        infoMessage = null;
+        account = null;
+        masteryRows.Clear();
+
+        if (string.IsNullOrWhiteSpace(gameName) || string.IsNullOrWhiteSpace(tagLine))
+        {
+            errorMessage = "Please enter both Game Name and Tag.";
+            return;
+        }
+
+        try
+        {
+            isLoading = true;
+
+            account = await RiotService.GetAccountByRiotIdAsync(gameName.Trim(), tagLine.Trim(), region);
+            if (account?.puuid is null)
+            {
+                infoMessage = "No player found for that Riot ID.";
+                return;
+            }
+
+            var mastery = await RiotService.GetChampionMasteriesByPuuidAsync(account.puuid, region);
+            var champions = await RiotService.GetChampionMappingAsync();
+
+            foreach (var item in mastery.OrderByDescending(m => m.championPoints).Take(20))
+            {
+                if (!champions.TryGetValue(item.championId, out var champion))
+                {
+                    champion = new ChampionInfo { Name = $"Champion #{item.championId}" };
+                }
+
+                masteryRows.Add(new MasteryRow
+                {
+                    Mastery = item,
+                    ChampionName = champion.Name ?? $"Champion #{item.championId}",
+                    ChampionImageUrl = champion.ImageUrl
+                });
+            }
+
+            if (masteryRows.Count == 0)
+            {
+                infoMessage = "No champion mastery data found for this account. Maybe try the Valorant lookup.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Riot API request failed: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private static DateTime ToDateTime(long unixMilliseconds)
+    {
+        try
+        {
+            return DateTimeOffset.FromUnixTimeMilliseconds(unixMilliseconds).LocalDateTime;
+        }
+        catch
+        {
+            return DateTime.MinValue;
+        }
+    }
+
+    private sealed class MasteryRow
+    {
+        public required ChampionMasteryDto Mastery { get; init; }
+        public required string ChampionName { get; init; }
+        public string? ChampionImageUrl { get; init; }
+    }
+}

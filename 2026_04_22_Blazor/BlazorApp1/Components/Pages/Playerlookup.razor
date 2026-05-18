@@ -13,7 +13,7 @@
             <input class="form-control" @bind="gameName" placeholder="e.g. hideonbush" />
         </div>
         <div class="col-12 col-md-2">
-            <label class="form-label">Tag</label>
+            <label class="form-label">Tag (if applicable)</label>
             <input class="form-control" @bind="tagLine" placeholder="e.g. KR1" />
         </div>
         <div class="col-12 col-md-2">
@@ -126,7 +126,6 @@
                 infoMessage = "No player found for that Riot ID.";
                 return;
             }
-
             var mastery = await RiotService.GetChampionMasteriesByPuuidAsync(account.puuid, region);
             var champions = await RiotService.GetChampionMappingAsync();
 
